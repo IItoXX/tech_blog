@@ -9,26 +9,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-class CommentType extends AbstractType
-{
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
-        $builder
-            ->add('username', TextType::class, [
-                'label' => 'Nom',
-                'attr' => ['placeholder' => 'Entrez votre nom'],
-            ])
-            ->add('content', TextareaType::class, [
-                'label' => 'Commentaire',
-                'attr' => ['placeholder' => 'Écrivez votre commentaire...'],
-            ])
-        ;
+class CommentType extends AbstractType {
+    public function buildForm(FormBuilderInterface $builder, array $options): void {
+        $builder->add('username', TextType::class, ['label' => 'Nom', 'attr' => ['placeholder' => 'Entrez votre nom']])->add('content', TextareaType::class, ['label' => 'Commentaire', 'attr' => ['placeholder' => 'Écrivez votre commentaire...']]);
     }
-
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'data_class' => Comment::class,
-        ]);
+    public function configureOptions(OptionsResolver $resolver): void {
+        $resolver->setDefaults(['data_class' => Comment::class]);
     }
 }
